@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A weekly guide to spaceflight, astronomy, NASA, ESA, UK space activity and discoveries.">
+<meta name="theme-color" content="#071426">
+<title>Space News — Weekly Briefing</title>
+<style>
+:root{color-scheme:dark;--bg:#071426;--panel:#0e2038;--line:#203a5a;--muted:#a9bbd1;--text:#f3f7ff;--cyan:#73e0ed;--gold:#ffd18a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#16365b 0,transparent 36%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:var(--cyan)}.wrap{width:min(1120px,92%);margin:auto}.top{padding:24px 0;border-bottom:1px solid #ffffff18}.brand{font-weight:750;letter-spacing:.12em;text-transform:uppercase;font-size:.83rem}.brand span{color:var(--cyan)}.hero{padding:72px 0 56px;position:relative}.eyebrow{color:var(--gold);font-size:.8rem;font-weight:750;letter-spacing:.18em;text-transform:uppercase}.hero h1{font-size:clamp(2.6rem,7vw,5.6rem);line-height:.98;letter-spacing:-.055em;max-width:800px;margin:18px 0}.hero h1 em{font-style:normal;color:var(--cyan)}.intro{max-width:650px;color:var(--muted);font-size:1.15rem}.pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}.pill{border:1px solid var(--line);border-radius:99px;padding:7px 12px;color:#d3e2f6;font-size:.85rem}.section{padding:28px 0 68px}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:22px}.sectionhead h2{margin:0;font-size:1.7rem}.sectionhead p{margin:0;color:var(--muted);font-size:.9rem}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:linear-gradient(145deg,#112844,#0a1b30);border:1px solid var(--line);border-radius:18px;padding:24px;min-height:170px}.card .num{font-size:.75rem;color:var(--cyan);letter-spacing:.14em;font-weight:800}.card h3{margin:12px 0 8px;font-size:1.25rem}.card p{margin:0;color:var(--muted)}.empty{padding:32px;border:1px dashed #355272;border-radius:18px;color:var(--muted);background:#0b1a2b}.empty strong{display:block;color:var(--text);font-size:1.1rem;margin-bottom:6px}.archive-list{display:grid;gap:12px}.report{display:flex;align-items:center;justify-content:space-between;gap:20px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px}.report h3{margin:0 0 4px}.report p{margin:0;color:var(--muted);font-size:.9rem}.report a{white-space:nowrap;text-decoration:none;font-weight:700}.report a:hover{text-decoration:underline}footer{border-top:1px solid #ffffff18;padding:24px 0 40px;color:var(--muted);font-size:.88rem}.footrow{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:650px){.hero{padding:52px 0 40px}.grid{grid-template-columns:1fr}.sectionhead{align-items:start;flex-direction:column}.report{align-items:start;flex-direction:column}.report a{white-space:normal}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap brand">✦ <span>SPACE</span> NEWS / WEEKLY BRIEFING</div></header>
+<main>
+<section class="hero wrap">
+<div class="eyebrow">Your window on the universe</div>
+<h1>Big stories.<br><em>Bigger universe.</em></h1>
+<p class="intro">A weekly roundup of space exploration, rocket launches, astronomy discoveries and the missions expanding what we know about the cosmos.</p>
+<div class="pills"><span class="pill">Spaceflight & launches</span><span class="pill">NASA · ESA · UK</span><span class="pill">Astronomy & discovery</span><span class="pill">Commercial space</span></div>
+</section>
+<section class="section wrap">
+<div class="sectionhead"><div><h2>Explore the briefing</h2><p>What each weekly edition covers</p></div></div>
+<div class="grid">
+<article class="card"><div class="num">01 / MISSIONS</div><h3>Spaceflight & launches</h3><p>Rocket launches, spacecraft, mission milestones and what's coming next.</p></article>
+<article class="card"><div class="num">02 / AGENCIES</div><h3>NASA, ESA & the UK</h3><p>Agency announcements, science missions and Britain's role in space.</p></article>
+<article class="card"><div class="num">03 / THE COSMOS</div><h3>Astronomy & discoveries</h3><p>Planets, exoplanets, galaxies and major findings from observatories.</p></article>
+<article class="card"><div class="num">04 / INDUSTRY</div><h3>Commercial space</h3><p>SpaceX and the wider space industry, technology and new developments.</p></article>
+</div>
+</section>
+<section class="section wrap">
+<div class="sectionhead"><div><h2>Latest editions</h2><p>Reports published by the weekly Space News project</p></div></div>
+<div id="reports" class="archive-list"><div class="empty"><strong>Preparing the archive</strong>Checking for published weekly reports…</div></div>
+</section>
+</main>
+<footer><div class="wrap footrow"><span>Space News · A personal weekly space briefing</span><span>Reports and sources should be checked at the original publisher.</span></div></footer>
+<script>
+(async function(){
+ const root=document.getElementById('reports');
+ try{
+  const res=await fetch('./reports/index.json',{cache:'no-store'});
+  if(!res.ok) throw new Error('No report index yet');
+  const data=await res.json();
+  const items=Array.isArray(data.reports)?data.reports:[];
+  if(!items.length) throw new Error('No editions published yet');
+  root.innerHTML=items.map((r,i)=>'<article class="report"><div><h3>'+escapeHtml(r.title||r.date||'Weekly Space News')+'</h3><p>'+escapeHtml(r.summary||'Weekly space news report')+'</p></div><a href="./reports/'+encodeURIComponent(r.file)+'">Read edition ↗</a></article>').join('');
+ }catch(e){
+  root.innerHTML='<div class="empty"><strong>Your first edition will appear here</strong>The website is ready. The Hermes weekly job currently saves reports in your local Obsidian vault; those files still need to be published to this site before they can appear here.</div>';
+ }
+ function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+})();
+</script>
+</body></html>
