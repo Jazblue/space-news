@@ -1,10 +1,16 @@
 {
   "reports": [
     {
+      "date": "2026-11-01",
+      "file": "2026-11-01.md",
+      "title": "Weekly Space News \u2014 November 1, 2026",
+      "summary": "SpaceX hits 700th Falcon 9 launch, ISS solar array nearly complete, Swift telescope ends mission, Hubble rescue requested, ULA returns to flight soon."
+    },
+    {
       "date": "2026-10-26",
       "file": "2026-10-26.md",
       "summary": "Major developments across NASA's Artemis programme, SpaceX Starship plans, ESA milestones, and Japan's Mars moon sample return mission.",
-      "title": "Weekly Space News — October 26, 2026"
+      "title": "Weekly Space News \u2014 October 26, 2026"
     }
   ]
 }
